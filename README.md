@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Link Safety Shield</title>
+    <style>
+        :root {
+            --primary-color: #25D366;
+            --secondary-color: #128C7E;
+            --accent-color: #FF3B30;
+            --light-color: #F5F5F5;
+            --dark-color: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f2f5;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .warning {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        
+        .reported-links {
+            margin-top: 2rem;
+        }
+        
+        .link-item {
+            background: #f9f9f9;
+            border-left: 4px solid var(--accent-color);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-box {
+            flex: 1;
+            min-width: 200px;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: var(--dark-color);
+            color: white;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .stats {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">WhatsApp Link Safety Shield</div>
+        <p>Protect yourself and others from malicious WhatsApp links</p>
+    </header>
+    
+    <div class="container">
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-number" id="reported-count">154</div>
+                <div>Links Reported</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="protected-count">5,289</div>
+                <div>People Protected</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="active-threats">12</div>
+                <div>Active Threats</div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>Report a Suspicious WhatsApp Link</h2>
+            <p class="warning">If you've received a suspicious WhatsApp link like the one mentioned, report it here to help protect others.</p>
+            
+            <form id="report-form">
+                <div class="form-group">
+                    <label for="link-url">Suspicious Link URL</label>
+                    <input type="url" id="link-url" placeholder="https://wa.me/message/..." required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="link-description">Description of the Scam</label>
+                    <textarea id="link-description" rows="4" placeholder="Describe the message you received and how they're trying to scam people..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact-method">How did you receive this link?</label>
+                    <input type="text" id="contact-method" placeholder="WhatsApp group, direct message, etc." required>
+                </div>
+                
+                <button type="submit">Report Link</button>
+            </form>
+        </div>
+        
+        <div class="card">
+            <h2>Recently Reported Links</h2>
+            <div class="reported-links" id="reported-links-list">
+                <div class="link-item">
+                    <h3>https://wa.me/message/SOOSCH2ISQVGA1</h3>
+                    <p><strong>Description:</strong> Person sending messages like "CLICK THAT LINK AND THEN WRITE THE WORD INTERESTED AND THANK ME LATER" without permission.</p>
+                    <p><strong>Received via:</strong> WhatsApp direct message</p>
+                    <p><strong>Reported:</strong> Today</p>
+                </div>
+                <div class="link-item">
+                    <h3>https://wa.me/message/ABC123EXAMPLE</h3>
+                    <p><strong>Description:</strong> Fake money transfer promotion asking for personal information.</p>
+                    <p><strong>Received via:</strong> WhatsApp group</p>
+                    <p><strong>Reported:</strong> 2 days ago</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>How to Protect Yourself</h2>
+            <ul>
+                <li>Never click on suspicious links from unknown senders</li>
+                <li>Don't share personal or financial information through WhatsApp</li>
+                <li>Enable two-factor authentication on your WhatsApp account</li>
+                <li>Report spam messages directly within WhatsApp</li>
+                <li>Educate your contacts about these scams</li>
+            </ul>
+            
+            <h3>If you've already clicked a suspicious link:</h3>
+            <ol>
+                <li>Scan your device with a reputable antivirus software</li>
+                <li>Change your WhatsApp password and enable two-factor authentication</li>
+                <li>Check your connected devices in WhatsApp Settings → Linked Devices</li>
+                <li>Monitor your financial accounts for suspicious activity</li>
+                <li>Alert your contacts that you may have been compromised</li>
+            </ol>
+        </div>
+    </div>
+    
+    <footer>
+        <p>WhatsApp Link Safety Shield &copy; 2025</p>
+        <p>This service is provided for educational purposes only. We are not affiliated with WhatsApp or Meta.</p>
+    </footer>
+
+    <script>
+        // Simple client-side functionality
+        document.getElementById('report-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const linkUrl = document.getElementById('link-url').value;
+            const description = document.getElementById('link-description').value;
+            const contactMethod = document.getElementById('contact-method').value;
+            
+            // In a real implementation, this would send data to a server
+            // For now, we'll just add it to the list visually
+            const newReport = document.createElement('div');
+            newReport.className = 'link-item';
+            newReport.innerHTML = `
+                <h3>${linkUrl}</h3>
+                <p><strong>Description:</strong> ${description}</p>
+                <p><strong>Received via:</strong> ${contactMethod}</p>
+                <p><strong>Reported:</strong> Just now</p>
+            `;
+            
+            document.getElementById('reported-links-list').prepend(newReport);
+            
+            // Update stats
+            document.getElementById('reported-count').textContent = 
+                parseInt(document.getElementById('reported-count').textContent) + 1;
+            document.getElementById('protected-count').textContent = 
+                parseInt(document.getElementById('protected-count').textContent) + 50;
+            document.getElementById('active-threats').textContent = 
+                parseInt(document.getElementById('active-threats').textContent) + 1;
+            
+            // Reset form
+            document.getElementById('report-form').reset();
+            
+            alert('Thank you for reporting this link! Your submission helps protect others.');
+        });
+    </script>
+</body>
+</html>
